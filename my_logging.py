@@ -33,7 +33,7 @@ def setup_log_level():
 
     # Create logger
     logger = logging.getLogger('MY_LOGGER - AIND-Planning logger')
-    logger.setLevel('DEBUG') # specifies lowest-severity log message a logger will handle
+    logger.setLevel('ERROR') # specifies lowest-severity log message a logger will handle
 
     if len(sys.argv):
         log_args = [arg for arg in sys.argv if '--log=' in arg]

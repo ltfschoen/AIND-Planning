@@ -74,7 +74,7 @@ ___
     * `python3 run_search.py -h` (help)
     * `python3 run_search.py -m` (interactive mode allows selection of one or more Air Cargo Problems, and
     allows selection of one or more Search Algorithms to solve with respectively)
-    * `python3 run_search.py -p 1 2 3 -s 1 2 -s 1 2 3 4 5 6 7 8 9 10` (solve all available Air Cargo Problems using all specified Search Algorithms)
+    * `python3 run_search.py -p 1 2 3 -s 1 2 -s 1 2 3 4 5 6 7 8 9 10 11` (solve all available Air Cargo Problems using all specified Search Algorithms)
 
 * Run other scripts
     * `python3 my_planning_graph.py`
@@ -112,6 +112,7 @@ ___
 * Performance Comparison
 
     * [ ] - At least three uninformed planning algorithms (including breadth- and depth-first search) are compared on all three problems.
+    Note: Use `python3 run_search.py -m` OR `python3 run_search.py -p 1 2 3 -s 1 2 -s 1 2 3 4 5 6 7 8 9 10 11` to run performance comparison
 
     * [ ] - At least two automatic heuristics are used with A* search for planning and are compared on all three problems including “ignore-preconditions” and “level-sum” from the Planning Graph.
 
@@ -127,19 +128,18 @@ ___
 
     * [X] - Download the template code from: https://github.com/udacity/AIND-Planning
 
-    * [ ] - Open the README.md file and follow the instructions there to complete the project.
+    * [X] - Open the README.md file and follow the instructions there to complete the project.
 
     * [ ] - Run script works successfully for all problems
         * `python3 run_search.py -m`
 
-    * [ ] - All Unit Tests pass when running:
+    * [X] - All Unit Tests pass when running:
         * `python -m unittest tests.test_my_air_cargo_problems`
         * `python -m unittest tests.test_my_planning_graph`
 
 * Reading
 
-    * [ ] - Read "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10
-
+    * [X] - Read "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10
 
 * Research Review
 

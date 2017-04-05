@@ -103,13 +103,15 @@ from lp_utils import (
 from my_planning_graph import PlanningGraph
 from run_search import run_search
 
+import my_logging
+from my_logging import *
+my_logging.setup_log_level()
 
 class HaveCakeProblem(Problem):
     def __init__(self, initial: FluentState, goal: list):
         self.state_map = initial.pos + initial.neg
         Problem.__init__(self, encode_state(initial, self.state_map), goal=goal)
         self.actions_list = self.get_actions()
-
 
     # Returns list including Eat Action and Bake Action
     def get_actions(self):
@@ -184,8 +186,12 @@ class HaveCakeProblem(Problem):
         return pg_levelsum
 
     def h_ignore_preconditions(self, node: Node):
-        # not implemented
         count = 0
+        kb = PropKB()
+        kb.tell(decode_state(node.state, self.state_map).pos_sentence())
+        for clause in self.goal:
+            if clause not in kb.clauses:
+                count += 1
         return count
 
 
@@ -229,7 +235,7 @@ if __name__ == '__main__':
     run_search(p, greedy_best_first_graph_search, parameter=p.h_1)
     print("*** A-star null heuristic")
     run_search(p, astar_search, p.h_1)
-    # print("A-star ignore preconditions heuristic")
-    # rs(p, "astar_search - ignore preconditions heuristic", astar_search, p.h_ignore_preconditions)
-    # print(""A-star levelsum heuristic)
-    # rs(p, "astar_search - levelsum heuristic", astar_search, p.h_pg_levelsum)
+    print("*** A-star ignore preconditions heuristic")
+    run_search(p, astar_search, p.h_ignore_preconditions)
+    print("*** A-star levelsum heuristic")
+    run_search(p, astar_search, p.h_pg_levelsum)

@@ -35,6 +35,7 @@ SEARCHES = [["breadth_first_search", breadth_first_search, ""],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_1'],
             ['astar_search', astar_search, 'h_1'],
             ['astar_search', astar_search, 'h_ignore_preconditions'],
+            ['astar_search', astar_search, 'h_ignore_delete_lists'],
             ['astar_search', astar_search, 'h_pg_levelsum'],
             ]
 

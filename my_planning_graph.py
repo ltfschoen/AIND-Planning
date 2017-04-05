@@ -350,7 +350,7 @@ class PlanningGraph():
                 count_subsets += 1
             count_total += 1
         count_a_levels_after = len(self.a_levels[level])
-        logging.debug("\nAdded %r action nodes (found to be subsets) out of %r to current A-level nodes changing count from %r to %r.", count_subsets, count_total, count_a_levels_before, count_a_levels_after)
+        # logging.debug("\nAdded %r action nodes (found to be subsets) out of %r to current A-level nodes changing count from %r to %r.", count_subsets, count_total, count_a_levels_before, count_a_levels_after)
 
     def add_literal_level(self, level):
         ''' Add an S-Level (literal) to the Planning Graph per Section 10.3 AIMA text, pg 381
@@ -395,7 +395,7 @@ class PlanningGraph():
                     count_unique += 1
                 count_total += 1
         count_s_levels_after = len(self.s_levels[level])
-        logging.debug("\nAdd %r unique effnodes out of %r to current S-level nodes changing count from %r to %r.", count_unique, count_total, count_s_levels_before, count_s_levels_after)
+        # logging.debug("\nAdd %r unique effnodes out of %r to current S-level nodes changing count from %r to %r.", count_unique, count_total, count_s_levels_before, count_s_levels_after)
 
     def update_a_mutex(self, nodeset):
         ''' Determine and update sibling mutual exclusion for A-level nodes
