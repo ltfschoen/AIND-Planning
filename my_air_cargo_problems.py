@@ -5,7 +5,7 @@ from aimacode.search import (
 )
 from aimacode.utils import expr
 from lp_utils import (
-    FluentState, encode_state, decode_state,
+FluentState, encode_state, decode_state,
 )
 from my_planning_graph import PlanningGraph
 

@@ -1,14 +1,105 @@
+# Import from Logic the following:
+#
+#   - Expr class - Expressions allowed to be represented as say E
+#                  maths expressions using symbols
+#                  with where E.op and E.args is its operator and arguments
+#                  to form logical sentences.
+#                  Represent as either `~(P & Q)  |'==>'|  (~P | ~Q)` or
+#                  with expr shortcut `expr('~(P & Q)  ==>  (~P | ~Q)')`
+#
+#   - PropKB class - Propositional Knowledge Bases used to
+#                  represent a knowledge base (KB) of propositional local sentences.
+#                  using its four methods
+#                    - __init__(self, sentence=None) - create clauses field as
+#                      list of all sentences in knowledge database where each
+#                      sentence comprises just literals and ORs
+#                    - tell(self, sentence) - adds a sentence to the KB by
+#                      converting to Conjunctive Normal Form (CNF), extracting
+#                      all clauses to clauses field
+#                    - ask_generator(self, query) - returns all substitutions
+#                      that make query True (i.e. returns {...} or False).
+#                    - ask_if_true(self, query) - same as ask_generator
+#                      but returns True or False
+#                    - retract(self, sentence) - converts sentences to clauses
+#                      and then removes all clauses from the knowledge base
 from aimacode.logic import PropKB
+
+# Import from Action the following:
+#
+#   - Action class - Action Schema used to describe Actions using the
+#                  Expr class including Preconditions and Effects
+#                  where Variables are args using the
+#                  Planning Planning Domain Definition Language (PDDL)
 from aimacode.planning import Action
+
 from aimacode.search import (
-    Node, breadth_first_search, astar_search,
-    depth_first_graph_search, uniform_cost_search, greedy_best_first_graph_search,
+    Node,
+    breadth_first_search,
+    astar_search,
+    depth_first_graph_search,
+    uniform_cost_search,
+    greedy_best_first_graph_search,
     Problem,
 )
 from aimacode.utils import expr
 from lp_utils import (
-    FluentState, encode_state, decode_state
+    FluentState,
+    encode_state,
+    decode_state
 )
+
+# Import from PlanningGraph the following:
+#
+#  - PgNode class - Planning Graph Nodes base class including:
+#
+#                       Properties:
+#                           - Parent - set of parent nodes up a level
+#                           - Child - set of child nodes down a level
+#                           - Mutex - set of sibling nodes mutually exclusive with current node
+#
+#  - PgNode_s class - Planning Graph "State" (Literal Fluent) Nodes:
+#    (inherits from PgNode)
+#
+#                       Properties:
+#                           - Parent - set of parent nodes up at previous Action level (A-level)
+#                           - Child - set of child nodes down at next Action level (A-Level)
+#                           - Mutex - set of sibling State Nodes (S-Nodes) mutex with current node
+#
+#  - PgNode_a class - Planning Graph "Action" (Type Nodes):
+#    (inherits from PgNode)
+#
+#                       Properties:
+#                           - Parent - set of parent Precondition nodes up at previous State level (S-level)
+#                           - Child - set of child Effect nodes down at next State level (S-level)
+#                           - Mutex - set of sibling Action Nodes (A-Nodes) mutex with current node
+#
+#  - PlanningGraph class - Planning Graph is built with alternating Action and State levels until the
+#                           last two State levels contain the same literals
+#
+#                       Properties:
+#                           - Problem - i.e. subclass of HaveCakeProblem
+#                           - Serial Planning - Whether one Action may occur at a time
+#                           - Fluent State - fluent states T/F (i.e. string in form 'TFTTFF')
+#                           - Ground Actions - list of valid ground actions and noop actions
+#                               - Noop Actions lists comprise both a positive no-op action
+#                               (literal as positive precondition with literal expression added as output
+#                               effect) and negative no-op action (literal as negative precondition with
+#                               literal expression removed from output effect) for each literal expression that
+#                               they pass through levels of planning graph.
+#                           - State Levels - list of sets of PgNode_s that each represent an S-level
+#                           - Action Levels - list of sets of PgNode_a that each represent an A-level
+#
+#                        Functions:
+#
+#                           - Noop Actions
+#                           - Planning Graph - create
+#                           - Action - add A-level to Planning Graph
+#                           - State - add S-level (literal) to Planning Graph
+#                           - Mutex - update A-level node mutex for siblings when
+#                               - Serial Planning Graph
+#                               - Action node pairs are non-persistence actions
+#                               - Action node pairs have either Inconsistent Effects, Interference, Competing needs
+
 from my_planning_graph import PlanningGraph
 from run_search import run_search
 
@@ -19,6 +110,8 @@ class HaveCakeProblem(Problem):
         Problem.__init__(self, encode_state(initial, self.state_map), goal=goal)
         self.actions_list = self.get_actions()
 
+
+    # Returns list including Eat Action and Bake Action
     def get_actions(self):
         precond_pos = [expr("Have(Cake)")]
         precond_neg = []

@@ -8,6 +8,48 @@
 
 # Chapter 1 - My Setup and Rubrics Checklist <a id="chapter-1"></a>
 
+### Approach to Solving
+
+* Example "Have Cake"
+    * Inspect `example_have_cake.py`, specifically imported libraries from AIMA code
+    such as `aimacode.logic import PropKB`
+    * Fork and clone AIMA Code https://github.com/ltfschoen/aima-python
+    * Open `logic.ipynb` with Jupyter Notebook that provides detailed examples and explanations for use:
+        `jupyter notebook logic.ipynb`'
+        * Note: In Jupyter Notebook, show source code of a with print source function `%psource` (i.e. `%psource WalkSAT`)
+        * Note: In Jupyter Notebook, view abbreviated object description by using trailing question mark (i.e. `WalkSAT?`)
+        * OR inspect on GitHub https://github.com/ltfschoen/aima-python/blob/master/logic.ipynb
+    * Open `logic.py` https://github.com/ltfschoen/aima-python/blob/master/logic.py
+    * Open Python Command Line `python3`
+    * Experiment
+        ```
+        from utils import *
+        from logic import *
+
+        logic.expr((P | "==>") | ~Q) == logic.expr('P ==> ~Q')
+        # True
+
+        partial = PartialExpr('==>', P)
+        partial | ~Q
+        logic.expr(partial | ~Q) == logic.expr('P ==> ~Q')
+        # True
+
+        # Show operators and arguments
+        expr('~(P & Q) ==>  (~P | ~Q)').op
+        # '==>'
+
+        expr('~(P & Q) ==>  (~P | ~Q)').args
+        # (~(P & Q), (~P | ~Q))
+
+        expr('~(P & Q)  ==>  (~P | ~Q)') == symbols('P, Q')
+        # False
+
+        expr('(P & Q)  ==>  (P | Q)') == symbols('P, Q')
+        # False
+
+        ```
+
+
 ### Instructions and Setup Environment
 
 ___
@@ -17,6 +59,8 @@ ___
 * Use Python 3.4 or higher
 
 * IntelliJ: File > Project Structure > Project Settings > Project > Project SDK > Python 3.6.0 (~/miniconda3/bin/python)
+* IntelliJ: Preferences > Editor > File Types > Python
+    * Add *.py
 
 * Switch to Miniconda env
     * `source activate aind` (same steps as in https://github.com/ltfschoen/aind/blob/master/README.md)
@@ -28,7 +72,9 @@ ___
 
 * Run script to gather metrics for search methods on all problems
     * `python3 run_search.py -h` (help)
-    * `python3 run_search.py -m` (interactive mode)
+    * `python3 run_search.py -m` (interactive mode allows selection of one or more Air Cargo Problems, and
+    allows selection of one or more Search Algorithms to solve with respectively)
+    * `python3 run_search.py -p 1 2 3 -s 1 2 -s 1 2 3 4 5 6 7 8 9 10` (solve all available Air Cargo Problems using all specified Search Algorithms)
 
 * Run other scripts
     * `python3 my_planning_graph.py`
@@ -54,74 +100,74 @@ ___
 
 * Planning Problem Representation
 
-* [ ] - The problems and class methods in the my_air_cargo_problems.py module are correctly represented
+    * [ ] - The problems and class methods in the my_air_cargo_problems.py module are correctly represented
 
-* [ ] - An optimal sequence of actions is identified for each problem in the written report.
+    * [ ] - An optimal sequence of actions is identified for each problem in the written report.
 
 * Automated Heuristics
 
-* [ ] - Automated heuristics for planning searches including
-“ignore-preconditions” and “level-sum” (planning graph) are correctly implemented
+    * [ ] - Automated heuristics for planning searches including
+    “ignore-preconditions” and “level-sum” (planning graph) are correctly implemented
 
 * Performance Comparison
 
-* [ ] - At least three uninformed planning algorithms (including breadth- and depth-first search) are compared on all three problems.
+    * [ ] - At least three uninformed planning algorithms (including breadth- and depth-first search) are compared on all three problems.
 
-* [ ] - At least two automatic heuristics are used with A* search for planning and are compared on all three problems including “ignore-preconditions” and “level-sum” from the Planning Graph.
+    * [ ] - At least two automatic heuristics are used with A* search for planning and are compared on all three problems including “ignore-preconditions” and “level-sum” from the Planning Graph.
 
-* [ ] - A brief report lists (using a table and any appropriate visualizations)
-and verbally describes and analyses the performance of the algorithms on the problems compared,
-including the optimality of the solutions, time elapsed, and the number of node expansions required.
+    * [ ] - A brief report lists (using a table and any appropriate visualizations)
+    and verbally describes and analyses the performance of the algorithms on the problems compared,
+    including the optimality of the solutions, time elapsed, and the number of node expansions required.
 
-* [ ] - The report and its performance comparison explains the reason for the observed results using
-at least one appropriate justification from the video lessons
-or from outside resources (e.g., Norvig and Russell’s textbook).
+    * [ ] - The report and its performance comparison explains the reason for the observed results using
+    at least one appropriate justification from the video lessons
+    or from outside resources (e.g., Norvig and Russell’s textbook).
 
 * Coding and Analysis
 
-* [X] - Download the template code from: https://github.com/udacity/AIND-Planning
+    * [X] - Download the template code from: https://github.com/udacity/AIND-Planning
 
-* [ ] - Open the README.md file and follow the instructions there to complete the project.
+    * [ ] - Open the README.md file and follow the instructions there to complete the project.
 
-* [ ] - Run script works successfully for all problems
-    * `python3 run_search.py -m`
+    * [ ] - Run script works successfully for all problems
+        * `python3 run_search.py -m`
 
-* [ ] - All Unit Tests pass when running:
-    * `python -m unittest tests.test_my_air_cargo_problems`
-    * `python -m unittest tests.test_my_planning_graph`
+    * [ ] - All Unit Tests pass when running:
+        * `python -m unittest tests.test_my_air_cargo_problems`
+        * `python -m unittest tests.test_my_planning_graph`
 
 * Reading
 
-* [ ] - Read "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10
+    * [ ] - Read "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10
 
 
 * Research Review
 
-* [ ] - The report is complete and includes a summary of at least three key developments
-in the field of AI planning and search.
+    * [ ] - The report is complete and includes a summary of at least three key developments
+    in the field of AI planning and search.
 
-Read up on important historical developments in the field of AI planning and search.
-Write a one-page report on three of these developments, highlighting the relationships
-between the developments and their impact on the field of AI as a whole.
+    Read up on important historical developments in the field of AI planning and search.
+    Write a one-page report on three of these developments, highlighting the relationships
+    between the developments and their impact on the field of AI as a whole.
 
-Appropriate sources (such as books or magazine or journal articles) should be cited,
-and you should use citations in-line for sourced facts, quotations, and inferences.
+    Appropriate sources (such as books or magazine or journal articles) should be cited,
+    and you should use citations in-line for sourced facts, quotations, and inferences.
 
-Submit this as:
+    Submit this as:
 
-    * research_review.pdf
+        * research_review.pdf
 
 [Tip: The book Artificial Intelligence: A Modern Approach by Norvig and Russell is chock full of references in the Bibliographical and Historical notes at the end of Chapter 10.]
 
 * Submission
 
-* [ ] - Submit your work with all unit tests passing by uploading a .zip file containing
-all your work, which must include the following files:
+    * [ ] - Submit your work with all unit tests passing by uploading a .zip file containing
+    all your work, which must include the following files:
 
-    * my_air_cargo_problems.py
-    * my_planning_graph.py
-    * heuristic_analysis.pdf   (written responses and analysis)
-    * research_review.pdf
+        * my_air_cargo_problems.py
+        * my_planning_graph.py
+        * heuristic_analysis.pdf   (written responses and analysis)
+        * research_review.pdf
 
 # Chapter 2 - About <a id="chapter-2"></a>
 
@@ -289,7 +335,10 @@ and include the results in your report.
 `python run_search.py -h` to learn more.
 
 >#### Why a Planning Graph?
->The planning graph is somewhat complex, but is useful in planning because it is a polynomial-size approximation of the exponential tree that represents all possible paths. The planning graph can be used to provide automated admissible heuristics for any domain.  It can also be used as the first step in implementing GRAPHPLAN, a direct planning algorithm that you may wish to learn more about on your own (but we will not address it here).
+>The planning graph is somewhat complex, but is useful in planning because it is a polynomial-size approximation
+of the exponential tree that represents all possible paths. The planning graph can be used to provide automated
+admissible heuristics for any domain.  It can also be used as the first step in implementing GRAPHPLAN,
+a direct planning algorithm that you may wish to learn more about on your own (but we will not address it here).
 
 >*Planning Graph example from the AIMA book*
 >![Planning Graph](images/eatcake-graphplan2.png)
