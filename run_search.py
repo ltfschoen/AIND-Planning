@@ -7,6 +7,10 @@ from aimacode.search import (breadth_first_search, astar_search,
     recursive_best_first_search)
 from my_air_cargo_problems import air_cargo_p1, air_cargo_p2, air_cargo_p3
 
+import my_logging
+from my_logging import *
+my_logging.setup_log_level()
+
 PROBLEM_CHOICE_MSG = """
 Select from the following list of air cargo problems. You may choose more than
 one by entering multiple selections separated by spaces.
@@ -118,6 +122,7 @@ if __name__=="__main__":
     parser.add_argument('-s', '--searches', nargs="+", choices=range(1, len(SEARCHES)+1), type=int, metavar='',
                         help="Specify the indices of the search algorithms to use as a list of space separated values. Choose from: {!s}".format(list(range(1, len(SEARCHES)+1))))
     args = parser.parse_args()
+    logging.debug("\nRunning Search with Args: %r", args.__dict__)
 
     if args.manual:
         manual()

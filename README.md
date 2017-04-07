@@ -80,7 +80,7 @@ ___
     * `python3 my_planning_graph.py`
     * `python3 my_air_cargo_problems.py`
 
-* Run MyPy Linter with
+* Optionally Run MyPy Linter with
     ```bash
     mypy run_search.py
     mypy my_planning_graph.py
@@ -100,27 +100,27 @@ ___
 
 * Planning Problem Representation
 
-    * [ ] - The problems and class methods in the my_air_cargo_problems.py module are correctly represented
+    * [X] - The problems and class methods in the my_air_cargo_problems.py module are correctly represented
 
-    * [ ] - An optimal sequence of actions is identified for each problem in the written report.
+    * [X] - An optimal sequence of actions is identified for each problem in the written report.
 
 * Automated Heuristics
 
-    * [ ] - Automated heuristics for planning searches including
+    * [X] - Automated heuristics for planning searches including
     “ignore-preconditions” and “level-sum” (planning graph) are correctly implemented
 
 * Performance Comparison
 
-    * [ ] - At least three uninformed planning algorithms (including breadth- and depth-first search) are compared on all three problems.
+    * [X] - At least three uninformed planning algorithms (including breadth- and depth-first search) are compared on all three problems.
     Note: Use `python3 run_search.py -m` OR `python3 run_search.py -p 1 2 3 -s 1 2 -s 1 2 3 4 5 6 7 8 9 10 11` to run performance comparison
 
-    * [ ] - At least two automatic heuristics are used with A* search for planning and are compared on all three problems including “ignore-preconditions” and “level-sum” from the Planning Graph.
+    * [X] - At least two automatic heuristics are used with A* search for planning and are compared on all three problems including “ignore-preconditions” and “level-sum” from the Planning Graph.
 
-    * [ ] - A brief report lists (using a table and any appropriate visualizations)
+    * [X] - A brief report lists (using a table and any appropriate visualizations)
     and verbally describes and analyses the performance of the algorithms on the problems compared,
     including the optimality of the solutions, time elapsed, and the number of node expansions required.
 
-    * [ ] - The report and its performance comparison explains the reason for the observed results using
+    * [X] - The report and its performance comparison explains the reason for the observed results using
     at least one appropriate justification from the video lessons
     or from outside resources (e.g., Norvig and Russell’s textbook).
 
@@ -130,7 +130,7 @@ ___
 
     * [X] - Open the README.md file and follow the instructions there to complete the project.
 
-    * [ ] - Run script works successfully for all problems
+    * [X] - Run script works successfully for all problems (unless takes too long)
         * `python3 run_search.py -m`
 
     * [X] - All Unit Tests pass when running:
