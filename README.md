@@ -3,7 +3,7 @@
 
 # Table of Contents
   * [Chapter 1 - My Setup and Rubrics Checklist](#chapter-1)
-  * [Chapter 2 - My Setup and Rubrics Checklist](#chapter-2)
+  * [Chapter 2 - About](#chapter-2)
   * [Chapter 3 - Info from Udacity](#chapter-3)
 
 # Chapter 1 - My Setup and Rubrics Checklist <a id="chapter-1"></a>
@@ -51,10 +51,6 @@
 
 
 ### Instructions and Setup Environment
-
-___
-IN PROGRESS
-___
 
 * Use Python 3.4 or higher
 
